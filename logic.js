@@ -71,7 +71,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("r", 100)
     .attr("fill", "none")
     .attr("stroke", "blue")
-    .attr("stroke-width", 2);
+    .attr("stroke-width", 2)
+    .raise();
 
   const circle2 = svg
     .append("circle")
@@ -81,7 +82,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("r", 100)
     .attr("fill", "none")
     .attr("stroke", "red")
-    .attr("stroke-width", 2);
+    .attr("stroke-width", 2)
+    .raise();
 
   // allow for radius to be adjusted
   const circle_one_radius = document.querySelector("#circle_one_radius");
