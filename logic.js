@@ -52,7 +52,7 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
   return false;
 }
 
-const yearSlider = document.querySelector("#year_slider");
+const yearSlider = document.querySelector("#yearSlider");
 yearSlider.addEventListener("input", () => {
   console.log(yearSlider.value);
 });
