@@ -65,6 +65,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
   const circle1 = svg
     .append("circle")
+    .attr("class", "circle1")
     .attr("cx", projection([-122.45, 37.75])[0])
     .attr("cy", projection([-122.45, 37.75])[1])
     .attr("r", 100)
@@ -74,6 +75,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
   const circle2 = svg
     .append("circle")
+    .attr("class", "circle2")
     .attr("cx", projection([-122.4, 37.75])[0])
     .attr("cy", projection([-122.4, 37.75])[1])
     .attr("r", 100)
@@ -95,6 +97,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     circle2.attr("r", r);
   });
 
+  // deal with dragging
   function dragged(event) {
     d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
   }
