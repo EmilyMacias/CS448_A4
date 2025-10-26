@@ -52,10 +52,11 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
   return false;
 }
 
+const yearSlider = document.querySelector("#year_slider");
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const films = svg
     .selectAll(".film_circles")
-    .data(data)
+    .data(data.filter((d) => d["Release Year"] == +yearSlider.value))
     .join("circle")
     .attr("class", "film_circles")
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
@@ -84,6 +85,11 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("stroke", "red")
     .attr("stroke-width", 2)
     .raise();
+
+  // allow for data to be filtered based on year
+  yearSlider.addEventListener("input", () => {
+    films.data(data.filter((d) => d["Release Year"] == +yearSlider.value));
+  });
 
   // allow for radius to be adjusted
   const circle_one_radius = document.querySelector("#circle_one_radius");
