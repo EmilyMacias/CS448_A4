@@ -19,7 +19,7 @@ const mapFrameGeoJSON = (() => {
 
 // This projects a given [longitude, latitude] pair into [x, y] pixel positions onto our image.
 // D3 geoMercator projection fitted to San Francisco map
-projection = d3.geoMercator().fitExtent(
+const projection = d3.geoMercator().fitExtent(
   [
     [0, 0],
     [mapWidth, mapHeight],
