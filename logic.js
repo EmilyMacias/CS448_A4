@@ -92,18 +92,21 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
       (d) => d["Release Year"] == +yearSlider.value
     );
 
-    films.data(relevantData).join(
-      (enter) =>
-        enter
-          .append("circle")
-          .attr("class", "film_circles")
-          .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
-          .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
-          .attr("r", 2)
-          .attr("fill", "black"),
-      (update) => update,
-      (exit) => exit.remove()
-    );
+    svg
+      .selectAll(".film_circles")
+      .data(relevantData)
+      .join(
+        (enter) =>
+          enter
+            .append("circle")
+            .attr("class", "film_circles")
+            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
+            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
+            .attr("r", 2)
+            .attr("fill", "black"),
+        (update) => update,
+        (exit) => exit.remove()
+      );
   });
 
   // allow for radius to be adjusted
