@@ -45,6 +45,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .selectAll("film_circles")
     .data(data)
     .join("circle")
+    .attr("class", "film_circles")
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
     .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
