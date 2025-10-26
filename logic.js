@@ -69,7 +69,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.45, 37.75])[0])
     .attr("cy", projection([-122.45, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "none")
+    .attr("fill", "rgb(255,0,0,0.1)")
     .attr("stroke", "blue")
     .attr("stroke-width", 2)
     .raise();
@@ -80,7 +80,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.4, 37.75])[0])
     .attr("cy", projection([-122.4, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "none")
+    .attr("fill", "rgb(0,0,255,0.1)")
     .attr("stroke", "red")
     .attr("stroke-width", 2)
     .raise();
