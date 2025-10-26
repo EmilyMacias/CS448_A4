@@ -42,7 +42,7 @@ svg
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const films = svg
-    .selectAll("film_circles")
+    .selectAll(".film_circles")
     .data(data)
     .join("circle")
     .attr("class", "film_circles")
