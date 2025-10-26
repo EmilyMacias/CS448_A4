@@ -45,26 +45,26 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .selectAll("circle")
     .data(data)
     .join("circle")
-    .attr("cx", (d) => projection([+d.Longitude, +d.Latitude])[0])
-    .attr("cy", (d) => projection([+d.Longitude, +d.Latitude])[1])
+    .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
+    .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
     .attr("fill", "black");
+
+  const circle1 = svg
+    .append("circle")
+    .attr("cx", projection([-122.45, 37.75])[0])
+    .attr("cy", projection([-122.45, 37.75])[1])
+    .attr("r", 100)
+    .attr("fill", "rgba(0,0,255,0.2)")
+    .attr("stroke", "blue")
+    .attr("stroke-width", 2);
+
+  const circle2 = svg
+    .append("circle")
+    .attr("cx", projection([-122.4, 37.75])[0])
+    .attr("cy", projection([-122.4, 37.75])[1])
+    .attr("r", 100)
+    .attr("fill", "rgba(255,0,0,0.2)")
+    .attr("stroke", "red")
+    .attr("stroke-width", 2);
 });
-
-const circle1 = svg
-  .append("circle")
-  .attr("cx", projection([-122.45, 37.75])[0])
-  .attr("cy", projection([-122.45, 37.75])[1])
-  .attr("r", 100)
-  .attr("fill", "rgba(0,0,255,0.2)")
-  .attr("stroke", "blue")
-  .attr("stroke-width", 2);
-
-const circle2 = svg
-  .append("circle")
-  .attr("cx", projection([-122.4, 37.75])[0])
-  .attr("cy", projection([-122.4, 37.75])[1])
-  .attr("r", 100)
-  .attr("fill", "rgba(255,0,0,0.2)")
-  .attr("stroke", "red")
-  .attr("stroke-width", 2);
