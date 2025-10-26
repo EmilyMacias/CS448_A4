@@ -91,4 +91,12 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     const r = +circle_two_radius.value;
     circle2.attr("r", r);
   });
+
+  // allow for circles to be moved
+  function dragged(event, d) {
+    d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
+  }
+
+  circle1.call(d3.drag().on("drag", dragged));
+  circle2.call(d3.drag().on("drag", dragged));
 });
