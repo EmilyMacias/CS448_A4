@@ -84,12 +84,12 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const circle_two_radius = document.querySelector("#circle_two_radius");
 
   circle_one_radius.addEventListener("input", () => {
-    const r = circle_one_radius.value;
+    const r = +circle_one_radius.value;
     circle1.attr("r", r);
   });
 
   circle_two_radius.addEventListener("input", () => {
-    const r = circle_two_radius.value;
+    const r = +circle_two_radius.value;
     circle2.attr("r", r);
   });
 });
