@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exploring San Francisco</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Exploring San Francisco's Film Scene</h1>
+
+    <div class="filters">
+      <p>Year of movie release:</p>
+      <input id="yearSlider" type="range" min="1900" max="2025" value="2000" />
+
+      <p>Radius of Circle One:</p>
+      <input
+        id="circle_one_radius"
+        type="range"
+        min="10"
+        max="200"
+        value="30"
+      />
+
+      <p>Radius of Circle Two:</p>
+      <input
+        id="circle_two_radius"
+        type="range"
+        min="10"
+        max="200"
+        value="30"
+      />
+    </div>
+
+    <svg id="map"></svg>
+    <script src="logic.js"></script>
+  </body>
+</html>
