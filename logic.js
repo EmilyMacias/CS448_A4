@@ -114,18 +114,18 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     films.each(function () {
       const currentPoint = d3.select(this);
       const isInsideOne = checkIfInsideCircle(
-        currentPoint.attr("cx"),
-        currentPoint.attr("cy"),
-        circle1.attr("cx"),
-        circle1.attr("cy"),
-        circle1.attr("r")
+        +currentPoint.attr("cx"),
+        +currentPoint.attr("cy"),
+        +circle1.attr("cx"),
+        +circle1.attr("cy"),
+        +circle1.attr("r")
       );
       const isInsideTwo = checkIfInsideCircle(
-        currentPoint.attr("cx"),
-        currentPoint.attr("cy"),
-        circle2.attr("cx"),
-        circle2.attr("cy"),
-        circle2.attr("r")
+        +currentPoint.attr("cx"),
+        +currentPoint.attr("cy"),
+        +circle2.attr("cx"),
+        +circle2.attr("cy"),
+        +circle2.attr("r")
       );
       if (isInsideOne && isInsideTwo) {
         currentPoint.attr("fill", "green");
