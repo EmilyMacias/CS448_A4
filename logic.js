@@ -90,6 +90,28 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("stroke-width", 2)
     .raise();
 
+  // apply year slider filter
+  yearSlider.addEventListener("input", () => {
+    const relevantData = data.filter(
+      (d) => +d.ReleaseYear == +yearSlider.value
+    );
+    svg
+      .selectAll(".film_circles")
+      .data(relevantData)
+      .join(
+        (enter) =>
+          enter
+            .append("circle")
+            .attr("class", "film_circles")
+            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
+            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
+            .attr("r", 2)
+            .attr("fill", "black"),
+        (update) => update,
+        (exit) => exit.remove()
+      );
+  });
+
   // allow for radius to be adjusted
   const circle_one_radius = document.querySelector("#circle_one_radius");
   const circle_two_radius = document.querySelector("#circle_two_radius");
