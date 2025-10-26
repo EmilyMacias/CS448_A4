@@ -41,10 +41,6 @@ svg
   .attr("href", "sf_map.png");
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
-  console.log(
-    projection([+d.Longitude, +d.Latitude])[0],
-    projection([+d.Longitude, +d.Latitude])[1]
-  );
   const films = svg
     .selectAll("circle")
     .data(data)
