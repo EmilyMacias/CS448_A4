@@ -38,7 +38,8 @@ svg
   .append("image")
   .attr("width", mapWidth)
   .attr("height", mapHeight)
-  .attr("href", "sf_map.png");
+  .attr("href", "sf_map.png")
+  .style("pointer-events", "none");
 
 // function to check if a point is inside one of the circles
 function checkIfInsideCircle(x1, y1, circlex, circley, r) {
@@ -67,6 +68,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.45, 37.75])[0])
     .attr("cy", projection([-122.45, 37.75])[1])
     .attr("r", 100)
+    .attr("fill", "none")
     .attr("stroke", "blue")
     .attr("stroke-width", 2);
 
@@ -75,6 +77,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.4, 37.75])[0])
     .attr("cy", projection([-122.4, 37.75])[1])
     .attr("r", 100)
+    .attr("fill", "none")
     .attr("stroke", "red")
     .attr("stroke-width", 2);
 
@@ -91,9 +94,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     const r = +circle_two_radius.value;
     circle2.attr("r", r);
   });
-
-  // allow for circles to be moved
-  svg.select("image").style("pointer-events", "none");
 
   function dragged(event) {
     d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
