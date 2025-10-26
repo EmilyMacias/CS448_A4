@@ -67,7 +67,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.45, 37.75])[0])
     .attr("cy", projection([-122.45, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "rgba(0,0,255,0.2)")
     .attr("stroke", "blue")
     .attr("stroke-width", 2);
 
@@ -76,10 +75,10 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.4, 37.75])[0])
     .attr("cy", projection([-122.4, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "rgba(255,0,0,0.2)")
     .attr("stroke", "red")
     .attr("stroke-width", 2);
 
+  // allow for radius to be adjusted
   const circle_one_radius = document.querySelector("#circle_one_radius");
   const circle_two_radius = document.querySelector("#circle_two_radius");
 
