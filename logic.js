@@ -56,7 +56,7 @@ const yearSlider = document.querySelector("#year_slider");
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const films = svg
     .selectAll(".film_circles")
-    .data(data.filter((d) => d["Release Year"] == +yearSlider.value))
+    .data(data)
     .join("circle")
     .attr("class", "film_circles")
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
@@ -85,34 +85,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("stroke", "red")
     .attr("stroke-width", 2)
     .raise();
-
-  // allow for data to be filtered based on year
-  yearSlider.addEventListener("input", () => {
-    const relevantData = data.filter(
-      (d) => d["Release Year"] == +yearSlider.value
-    );
-
-    svg
-      .selectAll(".film_circles")
-      .data(relevantData)
-      .join(
-        (enter) =>
-          enter
-            .append("circle")
-            .attr("class", "film_circles")
-            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
-            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
-            .attr("r", 2)
-            .attr("fill", "black"),
-        (update) =>
-          update
-            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
-            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
-            .attr("r", 2)
-            .attr("fill", "black"),
-        (exit) => exit.remove()
-      );
-  });
 
   // allow for radius to be adjusted
   const circle_one_radius = document.querySelector("#circle_one_radius");
