@@ -42,7 +42,7 @@ svg
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const films = svg
-    .selectAll("circle")
+    .selectAll("film_circles")
     .data(data)
     .join("circle")
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
