@@ -92,18 +92,48 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   circle_one_radius.addEventListener("input", () => {
     const r = +circle_one_radius.value;
     circle1.attr("r", r);
+    getPointColors();
   });
 
   circle_two_radius.addEventListener("input", () => {
     const r = +circle_two_radius.value;
     circle2.attr("r", r);
+    getPointColors();
   });
 
   // deal with dragging
   function dragged(event) {
     d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
+    getPointColors();
   }
-
   circle1.call(d3.drag().on("drag", dragged));
   circle2.call(d3.drag().on("drag", dragged));
+
+  // color change
+  function getPointColors() {
+    films.each(function () {
+      const currentPoint = d3.select(this);
+      const isInsideOne = checkIfInsideCircle(
+        currentPoint.attr("cx"),
+        currentPoint.attr("cy"),
+        circle1.attr("cx"),
+        circle1.attr("cy"),
+        circle1.attr("r")
+      );
+      const isInsideTwo = checkIfInsideCircle(
+        currentPoint.attr("cx"),
+        currentPoint.attr("cy"),
+        circle2.attr("cx"),
+        circle2.attr("cy"),
+        circle2.attr("r")
+      );
+      if (isInsideOne && isInsideTwo) {
+        currentPoint.attr("fill", "green");
+      } else {
+        currentPoint.attr("fill", "pink");
+      }
+    });
+  }
+
+  getPointColors();
 });
