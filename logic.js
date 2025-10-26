@@ -40,6 +40,17 @@ svg
   .attr("height", mapHeight)
   .attr("href", "sf_map.png");
 
+// function to check if a point is inside one of the circles
+function checkIfInsideCircle(x1, y1, circlex, circley, r) {
+  if (
+    (x1 - circlex) * (x1 - circlex) + (y1 - circley) * (y1 - circley) <=
+    r * r
+  ) {
+    return true;
+  }
+  return false;
+}
+
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   const films = svg
     .selectAll(".film_circles")
@@ -68,4 +79,17 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("fill", "rgba(255,0,0,0.2)")
     .attr("stroke", "red")
     .attr("stroke-width", 2);
+
+  const circle_one_radius = document.querySelector("#circle_one_radius");
+  const circle_two_radius = document.querySelector("#circle_two_radius");
+
+  circle_one_radius.addEventListener("input", () => {
+    const r = circle_one_radius.value;
+    circle1.attr("r", r);
+  });
+
+  circle_two_radius.addEventListener("input", () => {
+    const r = circle_two_radius.value;
+    circle2.attr("r", r);
+  });
 });
