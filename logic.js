@@ -93,7 +93,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   });
 
   // allow for circles to be moved
-  function dragged(event, d) {
+  function dragged(event) {
     d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
   }
 
