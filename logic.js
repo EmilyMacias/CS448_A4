@@ -99,6 +99,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     d3.select(this).raise().attr("cx", event.x).attr("cy", event.y);
   }
 
-  circle1.call(d3.drag().on("drag", dragged));
-  circle2.call(d3.drag().on("drag", dragged));
+  circle1.call(d3.drag().on("drag", dragged)).raise();
+  circle2.call(d3.drag().on("drag", dragged)).raise();
 });
