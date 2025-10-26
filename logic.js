@@ -97,7 +97,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     );
     svg
       .selectAll(".film_circles")
-      .data(relevantData)
+      .data(relevantData, (d) => d["Title"])
       .join(
         (enter) =>
           enter
