@@ -168,19 +168,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     getPointColors();
   }
 
-  // apply director checkbox filter
-  selectAllButton.addEventListener("click", () => {
-    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
-      checkbox.checked = true;
-    });
-  });
-
-  deselectAllButton.addEventListener("click", () => {
-    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-  });
-
   function processAllFilters() {
     const selectedDirectors = [];
     checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
@@ -198,6 +185,24 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
     return relevantData;
   }
+
+  // apply director checkbox filter
+  selectAllButton.addEventListener("click", () => {
+    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+      checkbox.checked = true;
+    });
+
+    const relevantData = processAllFilters();
+    updateRelevantData(relevantData);
+  });
+
+  deselectAllButton.addEventListener("click", () => {
+    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+    const relevantData = processAllFilters();
+    updateRelevantData(relevantData);
+  });
 
   checkboxes.addEventListener("change", () => {
     const relevantData = processAllFilters();
