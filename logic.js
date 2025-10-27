@@ -74,7 +74,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.45, 37.75])[0])
     .attr("cy", projection([-122.45, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "rgba(0,0,255,0.3)")
+    .attr("fill", "rgba(0,0,255,0.2)")
     .attr("stroke", "blue")
     .attr("stroke-width", 2)
     .raise();
@@ -85,7 +85,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", projection([-122.4, 37.75])[0])
     .attr("cy", projection([-122.4, 37.75])[1])
     .attr("r", 100)
-    .attr("fill", "rgba(255,0,0,0.3)")
+    .attr("fill", "rgba(255,0,0,0.2)")
     .attr("stroke", "red")
     .attr("stroke-width", 2)
     .raise();
@@ -160,9 +160,9 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         +circle2.attr("r")
       );
       if (isInsideOne && isInsideTwo) {
-        currentPoint.attr("fill", "green");
+        currentPoint.attr("fill", "black");
       } else {
-        currentPoint.attr("fill", "pink");
+        currentPoint.attr("fill", "gray");
       }
     });
   }
