@@ -108,7 +108,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         );
     });
 
-  // build the filters
+  // build the filters for directors with checknoxes dynamically
   uniqueDirectorNames = new Set();
   data.forEach((d) => {
     uniqueDirectorNames.add(d["Director"]);
@@ -165,6 +165,21 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
       );
     getPointColors();
   }
+
+  // apply director checkbox filter
+  checkboxes.addEventListener("change", () => {
+    const selectedDirectors = new Set();
+    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+      if (checkbox.checked) {
+        selectedDirectors.add(checkbox.id);
+      }
+    });
+
+    const relevantData = data.filter((d) =>
+      selectedDirectors.has(d["Director"])
+    );
+    updateRelevantData(relevantData);
+  });
 
   // apply year slider filter
   yearSliderLower.addEventListener("input", () => {
