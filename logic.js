@@ -93,17 +93,10 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         .text((d) => d["Title"]);
     });
 
-  // apply year slider filter
-  yearSliderLower.addEventListener("input", () => {
-    const relevantData = data.filter(
-      (d) =>
-        +d["Release Year"] >= +yearSliderLower.value &&
-        +d["Release Year"] <= +yearSliderUpper.value
-    );
-
+  function updateRelevantData(data) {
     films = svg
       .selectAll(".film_circles")
-      .data(relevantData, (d) => d["Title"])
+      .data(data, (d) => d["Title"])
       .join(
         (enter) =>
           enter
@@ -122,6 +115,16 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         (exit) => exit.remove()
       );
     getPointColors();
+  }
+
+  // apply year slider filter
+  yearSliderLower.addEventListener("input", () => {
+    const relevantData = data.filter(
+      (d) =>
+        +d["Release Year"] >= +yearSliderLower.value &&
+        +d["Release Year"] <= +yearSliderUpper.value
+    );
+    updateRelevantData(relevantData);
   });
 
   yearSliderUpper.addEventListener("input", () => {
