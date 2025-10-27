@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>Exploring San Francisco</title>
+    <style>
+      yearSliderContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+      }
+    </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
 
@@ -11,25 +18,31 @@
 
     <div class="filters">
       <h3>Choose a range of years to explore!</h3>
-      <p>Lower Range for Year of movie release:</p>
-      <input
-        id="yearSliderLower"
-        type="range"
-        min="1900"
-        max="2025"
-        value="1930"
-      />
-      <span id="yearSelectLabelLower">1930</span>
+      <div id="yearSliderContainer">
+        <div>
+          <p>Lower Range for Year of movie release:</p>
+          <input
+            id="yearSliderLower"
+            type="range"
+            min="1900"
+            max="2025"
+            value="1930"
+          />
+          <span id="yearSelectLabelLower">1930</span>
+        </div>
 
-      <p>Upper Range for Year of movie release:</p>
-      <input
-        id="yearSliderUpper"
-        type="range"
-        min="1900"
-        max="2025"
-        value="2000"
-      />
-      <span id="yearSelectLabelUpper">1930</span>
+        <div>
+          <p>Upper Range for Year of movie release:</p>
+          <input
+            id="yearSliderUpper"
+            type="range"
+            min="1900"
+            max="2025"
+            value="2000"
+          />
+          <span id="yearSelectLabelUpper">1930</span>
+        </div>
+      </div>
 
       <h3>Adjust Circle Sizes</h3>
       <p>Radius of Circle One:</p>
