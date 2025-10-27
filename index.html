@@ -24,6 +24,13 @@
         flex-direction: column;
         gap: 50px;
       }
+      #checkboxes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: scroll;
+        height: 200px;
+      }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
@@ -46,12 +53,6 @@
 
       <div id="checkboxes">
         <h3>Filter by Director</h3>
-        <input
-          type="checkbox"
-          id="checkbox 1"
-          value="James Cameron"
-          class="checks"
-        />
         <label for="checkbox 1"> James Cameron</label>
       </div>
 

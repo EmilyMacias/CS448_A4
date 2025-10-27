@@ -108,6 +108,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         );
     });
 
+  // build the filters
   uniqueDirectorNames = new Set();
   data.forEach((d) => {
     uniqueDirectorNames.add(d["Director"]);
