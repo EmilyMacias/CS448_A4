@@ -57,10 +57,6 @@ const yearSelectLabel = document.querySelector("#yearSelectLabelLower");
 const yearSliderUpper = document.querySelector("#yearSliderUpper");
 const yearSelectLabelUpper = document.querySelector("#yearSelectLabelUpper");
 
-yearSlider.addEventListener("input", () => {
-  console.log(yearSlider.value);
-});
-
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   let films = svg
     .selectAll(".film_circles")
