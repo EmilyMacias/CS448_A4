@@ -155,7 +155,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
                     d["Director"] +
                     "\nWriter: " +
                     d["Writer"] +
-                    "Actors:" +
+                    "\nActors:" +
                     d["Actor 1"] +
                     ", " +
                     d["Actor 2"] +
