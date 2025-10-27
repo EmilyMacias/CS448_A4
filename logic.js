@@ -93,7 +93,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   // apply year slider filter
   yearSlider.addEventListener("input", () => {
     const relevantData = data.filter((d) =>
-      console.log(+d["ReleaseYear"], +yearSlider.value)
+      console.log(+d["Release Year"], +yearSlider.value)
     );
 
     console.log(relevantData);
