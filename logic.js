@@ -53,9 +53,7 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
 }
 
 const yearSliderLower = document.querySelector("#yearSliderLower");
-const yearSelectLabel = document.querySelector("#yearSelectLabelLower");
 const yearSliderUpper = document.querySelector("#yearSliderUpper");
-const yearSelectLabelUpper = document.querySelector("#yearSelectLabelUpper");
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   let films = svg
@@ -102,7 +100,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         +d["Release Year"] >= +yearSliderLower.value &&
         +d["Release Year"] <= +yearSliderUpper.value
     );
-    yearSelectLabelLower.textContent = yearSliderLower.value;
 
     films = svg
       .selectAll(".film_circles")
@@ -133,7 +130,6 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         +d["Release Year"] >= +yearSliderLower.value &&
         +d["Release Year"] <= +yearSliderUpper.value
     );
-    yearSelectLabelUpper.textContent = yearSliderUpper.value;
 
     films = svg
       .selectAll(".film_circles")
