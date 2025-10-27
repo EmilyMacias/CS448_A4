@@ -90,7 +90,21 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .each(function (d) {
       d3.select(this)
         .append("title")
-        .text((d) => "Title: " + d["Title"] + "\nDirector: " + d["Director"]);
+        .text(
+          (d) =>
+            "Title: " +
+            d["Title"] +
+            "\nDirector: " +
+            d["Director"] +
+            "\nWriter: " +
+            d["Writer"] +
+            "\nActors: " +
+            d["Actor 1"] +
+            ", " +
+            d["Actor 2"] +
+            ", " +
+            d["Actor 3"]
+        );
     });
 
   function updateRelevantData(data) {
@@ -110,7 +124,19 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
               d3.select(this)
                 .append("title")
                 .text(
-                  (d) => "Title: " + d["Title"] + "\nDirector: " + d["Director"]
+                  (d) =>
+                    "Title: " +
+                    d["Title"] +
+                    "\nDirector: " +
+                    d["Director"] +
+                    "\nWriter: " +
+                    d["Writer"] +
+                    "Actors:" +
+                    d["Actor 1"] +
+                    ", " +
+                    d["Actor 2"] +
+                    ", " +
+                    d["Actor 3"]
                 );
             }),
         (update) => update,
