@@ -80,6 +80,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("fill", "rgba(0,0,255,0.10)")
     .attr("stroke", "blue")
     .attr("stroke-width", 2)
+    .attr("pointer-events", "none")
     .raise();
 
   const circle2 = svg
@@ -91,6 +92,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("fill", "rgba(255,0,0,0.10)")
     .attr("stroke", "red")
     .attr("stroke-width", 2)
+    .attr("pointer-events", "none")
     .raise();
 
   // apply year slider filter
