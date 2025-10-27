@@ -52,8 +52,11 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
   return false;
 }
 
-const yearSlider = document.querySelector("#yearSlider");
-const yearSelectLabel = document.querySelector("#yearSelectLabel");
+const yearSliderLower = document.querySelector("#yearSliderLower");
+const yearSelectLabel = document.querySelector("#yearSelectLabelLower");
+const yearSliderUpper = document.querySelector("#yearSliderUpper");
+const yearSelectLabelUpper = document.querySelector("#yearSelectLabelUpper");
+
 yearSlider.addEventListener("input", () => {
   console.log(yearSlider.value);
 });
@@ -97,14 +100,44 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .raise();
 
   // apply year slider filter
-  yearSlider.addEventListener("input", () => {
-    console.log(+yearSlider.value);
+  yearSliderLower.addEventListener("input", () => {
     const relevantData = data.filter(
-      (d) => +d["Release Year"] == +yearSlider.value
+      (d) =>
+        +d["Release Year"] >= +yearSliderLower.value &&
+        +d["Release Year"] <= +yearSliderUpper.value
     );
+    yearSelectLabelLower.textContent = yearSliderLower.value;
 
-    console.log(relevantData);
-    yearSelectLabel.textContent = yearSlider.value;
+    films = svg
+      .selectAll(".film_circles")
+      .data(relevantData, (d) => d["Title"])
+      .join(
+        (enter) =>
+          enter
+            .append("circle")
+            .attr("class", "film_circles")
+            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
+            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
+            .attr("r", 2)
+            .attr("fill", "black")
+            .each(function (d) {
+              d3.select(this)
+                .append("title")
+                .text((d) => d["Title"]);
+            }),
+        (update) => update,
+        (exit) => exit.remove()
+      );
+    getPointColors();
+  });
+
+  yearSliderUpper.addEventListener("input", () => {
+    const relevantData = data.filter(
+      (d) =>
+        +d["Release Year"] >= +yearSliderLower.value &&
+        +d["Release Year"] <= +yearSliderUpper.value
+    );
+    yearSelectLabelUpper.textContent = yearSliderUpper.value;
 
     films = svg
       .selectAll(".film_circles")
