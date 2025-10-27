@@ -55,6 +55,28 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
 const yearSliderLower = document.querySelector("#yearSliderLower");
 const yearSliderUpper = document.querySelector("#yearSliderUpper");
 
+const circle1 = svg
+  .append("circle")
+  .attr("class", "circle1")
+  .attr("cx", projection([-122.45, 37.75])[0])
+  .attr("cy", projection([-122.45, 37.75])[1])
+  .attr("r", 100)
+  .attr("fill", "rgba(0,0,255,0.10)")
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2)
+  .raise();
+
+const circle2 = svg
+  .append("circle")
+  .attr("class", "circle2")
+  .attr("cx", projection([-122.4, 37.75])[0])
+  .attr("cy", projection([-122.4, 37.75])[1])
+  .attr("r", 100)
+  .attr("fill", "rgba(255,0,0,0.10)")
+  .attr("stroke", "red")
+  .attr("stroke-width", 2)
+  .raise();
+
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   let films = svg
     .selectAll(".film_circles")
@@ -69,30 +91,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
       d3.select(this)
         .append("title")
         .text((d) => d["Title"]);
-    });
-
-  const circle1 = svg
-    .append("circle")
-    .attr("class", "circle1")
-    .attr("cx", projection([-122.45, 37.75])[0])
-    .attr("cy", projection([-122.45, 37.75])[1])
-    .attr("r", 100)
-    .attr("fill", "rgba(0,0,255,0.10)")
-    .attr("stroke", "blue")
-    .attr("stroke-width", 2)
-    .attr("pointer-events", "none")
-    .raise();
-
-  const circle2 = svg
-    .append("circle")
-    .attr("class", "circle2")
-    .attr("cx", projection([-122.4, 37.75])[0])
-    .attr("cy", projection([-122.4, 37.75])[1])
-    .attr("r", 100)
-    .attr("fill", "rgba(255,0,0,0.10)")
-    .attr("stroke", "red")
-    .attr("stroke-width", 2)
-    .attr("pointer-events", "none")
+    })
     .raise();
 
   // apply year slider filter
