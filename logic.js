@@ -68,8 +68,11 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
     .attr("fill", "black")
-    .append("title")
-    .text((d) => d["Title"]);
+    .each(function (d) {
+      d3.select(this)
+        .append("title")
+        .text((d) => d["Title"]);
+    });
 
   const circle1 = svg
     .append("circle")
@@ -115,8 +118,11 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
             .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
             .attr("r", 2)
             .attr("fill", "black")
-            .append("title")
-            .text((d) => d["Title"]),
+            .each(function (d) {
+              d3.select(this)
+                .append("title")
+                .text((d) => d["Title"]);
+            }),
         (update) => update,
         (exit) => exit.remove()
       );
