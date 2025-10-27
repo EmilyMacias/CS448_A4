@@ -91,7 +91,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("r", 2)
     .attr("fill", "black")
     .each(function (d) {
-      d3.select(d)
+      d3.select(this)
         .append("title")
         .text(
           (d) =>
@@ -247,8 +247,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
   // color change
   function getPointColors() {
-    films.forEach((d) => {
-      const currentPoint = d3.select(d);
+    films.each(function (d) {
+      const currentPoint = d3.select(this);
       const isInsideOne = checkIfInsideCircle(
         +currentPoint.attr("cx"),
         +currentPoint.attr("cy"),
