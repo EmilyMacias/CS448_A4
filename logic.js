@@ -54,6 +54,7 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
 
 const yearSliderLower = document.querySelector("#yearSliderLower");
 const yearSliderUpper = document.querySelector("#yearSliderUpper");
+const checkboxes = document.querySelector("#checkboxes");
 
 const circle1 = svg
   .append("circle")
@@ -106,6 +107,11 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
             d["Actor 3"]
         );
     });
+
+  data.forEach((d) => {
+    checkboxes.innerHTML += `<input type="checkbox" id="checkbox_${d["Director"]}" value="${d["Director"]}" class="checks"/>`;
+    checkboxes.innerHTML += `<label for="checkbox_${d["Director"]}"> ${d["Director"]}</label>`;
+  });
 
   function updateRelevantData(data) {
     films = svg
