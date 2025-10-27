@@ -72,7 +72,7 @@ const circle2 = svg
   .attr("cx", projection([-122.4, 37.75])[0])
   .attr("cy", projection([-122.4, 37.75])[1])
   .attr("r", 100)
-  .attr("fill", "rgba(255,0,0,0.10)")
+  .attr("fill", "none")
   .attr("stroke", "red")
   .attr("stroke-width", 2)
   .raise();
@@ -86,13 +86,12 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
     .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
-    .attr("fill", "black")
+    .attr("fill", "none")
     .each(function (d) {
       d3.select(this)
         .append("title")
         .text((d) => d["Title"]);
-    })
-    .raise();
+    });
 
   // apply year slider filter
   yearSliderLower.addEventListener("input", () => {
@@ -118,8 +117,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
               d3.select(this)
                 .append("title")
                 .text((d) => d["Title"]);
-            })
-            .raise(),
+            }),
         (update) => update,
         (exit) => exit.remove()
       );
