@@ -90,7 +90,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .each(function (d) {
       d3.select(this)
         .append("title")
-        .text((d) => d["Title"]);
+        .text((d) => "Title: " + d["Title"] + "\nDirector: " + d["Director"]);
     });
 
   function updateRelevantData(data) {
@@ -109,7 +109,9 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
             .each(function (d) {
               d3.select(this)
                 .append("title")
-                .text((d) => d["Title"]);
+                .text(
+                  (d) => "Title: " + d["Title"] + "\nDirector: " + d["Director"]
+                );
             }),
         (update) => update,
         (exit) => exit.remove()
@@ -134,28 +136,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         +d["Release Year"] <= +yearSliderUpper.value
     );
 
-    films = svg
-      .selectAll(".film_circles")
-      .data(relevantData, (d) => d["Title"])
-      .join(
-        (enter) =>
-          enter
-            .append("circle")
-            .attr("class", "film_circles")
-            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
-            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
-            .attr("r", 2)
-            .attr("fill", "black")
-            .each(function (d) {
-              d3.select(this)
-                .append("title")
-                .text((d) => d["Title"]);
-            })
-            .raise(),
-        (update) => update,
-        (exit) => exit.remove()
-      );
-    getPointColors();
+    updateRelevantData(relevantData);
   });
 
   // allow for radius to be adjusted
