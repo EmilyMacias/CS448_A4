@@ -69,7 +69,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("r", 2)
     .attr("fill", "black")
     .append("title")
-    .text((d) => d["Title"]);
+    .text((d) => d["Title"])
+    .text((d) => d["Production Company"]);
 
   const circle1 = svg
     .append("circle")
@@ -116,7 +117,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
             .attr("r", 2)
             .attr("fill", "black")
             .append("title")
-            .text((d) => d["Title"]),
+            .text((d) => d["Title"])
+            .text((d) => d["Production Company"]),
         (update) => update,
         (exit) => exit.remove()
       );
