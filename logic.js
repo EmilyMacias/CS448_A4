@@ -63,7 +63,7 @@ const circle1 = svg
   .attr("r", 100)
   .attr("fill", "none")
   .attr("stroke", "blue")
-  .attr("stroke-width", 4)
+  .attr("stroke-width", 6)
   .raise();
 
 const circle2 = svg
@@ -74,7 +74,7 @@ const circle2 = svg
   .attr("r", 100)
   .attr("fill", "none")
   .attr("stroke", "red")
-  .attr("stroke-width", 4)
+  .attr("stroke-width", 6)
   .raise();
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
