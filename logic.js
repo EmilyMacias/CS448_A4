@@ -118,7 +118,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
               d3.select(this)
                 .append("title")
                 .text((d) => d["Title"]);
-            }),
+            })
+            .raise(),
         (update) => update,
         (exit) => exit.remove()
       );
@@ -148,7 +149,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
               d3.select(this)
                 .append("title")
                 .text((d) => d["Title"]);
-            }),
+            })
+            .raise(),
         (update) => update,
         (exit) => exit.remove()
       );
