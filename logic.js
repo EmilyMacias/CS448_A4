@@ -5,7 +5,7 @@ const mapHeight = 1580 / 2.4; // the 2.4 can be increased or decreased to adjust
 const longitudeRange = [-122.52876879101329, -122.34501499128038];
 const latitudeRange = [37.69947941416328, 37.81633202723721];
 
-// Note: I thik this was incorrect in the starter code provided so I had to get some help from ChatGPT to fix it.
+// Note: I think this was incorrect in the starter code provided so I had to get some help from ChatGPT to fix it.
 const mapFrameGeoJSON = (() => {
   const coords = [
     [longitudeRange[0], latitudeRange[0]],
