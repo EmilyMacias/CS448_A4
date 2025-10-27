@@ -135,37 +135,31 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     films = svg
       .selectAll(".film_circles")
       .data(data, (d) => d["Title"])
-      .join(
-        (enter) =>
-          enter
-            .append("circle")
-            .attr("class", "film_circles")
-            .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
-            .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
-            .attr("r", 2)
-            .attr("fill", "black")
-            .each(function (d) {
-              d3.select(this)
-                .append("title")
-                .text(
-                  (d) =>
-                    "Title: " +
-                    d["Title"] +
-                    "\nDirector: " +
-                    d["Director"] +
-                    "\nWriter: " +
-                    d["Writer"] +
-                    "\nActors:" +
-                    d["Actor 1"] +
-                    ", " +
-                    d["Actor 2"] +
-                    ", " +
-                    d["Actor 3"]
-                );
-            }),
-        (update) => update,
-        (exit) => exit.remove()
-      );
+      .join("circle")
+      .attr("class", "film_circles")
+      .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
+      .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
+      .attr("r", 2)
+      .attr("fill", "black")
+      .each(function (d) {
+        d3.select(this)
+          .append("title")
+          .text(
+            (d) =>
+              "Title: " +
+              d["Title"] +
+              "\nDirector: " +
+              d["Director"] +
+              "\nWriter: " +
+              d["Writer"] +
+              "\nActors:" +
+              d["Actor 1"] +
+              ", " +
+              d["Actor 2"] +
+              ", " +
+              d["Actor 3"]
+          );
+      });
     getPointColors();
   }
 
