@@ -9,6 +9,11 @@
         flex-direction: row;
         gap: 50px;
       }
+      #radii {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+      }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
@@ -45,23 +50,29 @@
       </div>
 
       <h3>Adjust Circle Sizes</h3>
-      <p>Radius of Circle One:</p>
-      <input
-        id="circle_one_radius"
-        type="range"
-        min="10"
-        max="200"
-        value="30"
-      />
+      <div id="radii">
+        <div>
+          <p>Radius of Circle One:</p>
+          <input
+            id="circle_one_radius"
+            type="range"
+            min="10"
+            max="200"
+            value="30"
+          />
+        </div>
 
-      <p>Radius of Circle Two:</p>
-      <input
-        id="circle_two_radius"
-        type="range"
-        min="10"
-        max="200"
-        value="30"
-      />
+        <div>
+          <p>Radius of Circle Two:</p>
+          <input
+            id="circle_two_radius"
+            type="range"
+            min="10"
+            max="200"
+            value="30"
+          />
+        </div>
+      </div>
     </div>
 
     <svg id="map"></svg>
