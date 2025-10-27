@@ -60,7 +60,7 @@ yearSlider.addEventListener("input", () => {
 });
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
-  const films = svg
+  let films = svg
     .selectAll(".film_circles")
     .data(data)
     .join("circle")
