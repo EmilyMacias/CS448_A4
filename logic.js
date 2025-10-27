@@ -108,9 +108,23 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         );
     });
 
+  uniqueDirectorNames = new Set();
   data.forEach((d) => {
-    checkboxes.innerHTML += `<input type="checkbox" id="checkbox_${d["Director"]}" value="${d["Director"]}" class="checks"/>`;
-    checkboxes.innerHTML += `<label for="checkbox_${d["Director"]}"> ${d["Director"]}</label>`;
+    uniqueDirectorNames.add(d["Director"]);
+  });
+
+  uniqueDirectorNames.forEach((d) => {
+    const addCheck = document.createElement("input");
+    addCheck.type = "checkbox";
+    addCheck.id = d;
+    addCheck.checked = true;
+    const addLabel = document.createElement("label");
+    const addBreak = document.createElement("br");
+    addLabel.htmlFor = d;
+    addLabel.textContent = d;
+    checkboxes.appendChild(addCheck);
+    checkboxes.appendChild(addLabel);
+    checkboxes.appendChild(addBreak);
   });
 
   function updateRelevantData(data) {
