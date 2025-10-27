@@ -110,7 +110,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         );
     });
 
-  // build the filters for directors with checknoxes dynamically
+  // build the filters for directors with checkboxes dynamically
   uniqueDirectorNames = new Set();
   data.forEach((d) => {
     uniqueDirectorNames.add(d["Director"]);
@@ -120,6 +120,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     const addCheck = document.createElement("input");
     addCheck.type = "checkbox";
     addCheck.id = d;
+    addCheck.className = "directorFilter";
     addCheck.checked = true;
     const addLabel = document.createElement("label");
     const addBreak = document.createElement("br");
@@ -170,7 +171,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
   function processAllFilters() {
     const selectedDirectors = [];
-    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+    checkboxes.querySelectorAll(".directorFilter").forEach((checkbox) => {
       if (checkbox.checked) {
         selectedDirectors.push(checkbox.id);
       }
@@ -188,7 +189,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
 
   // apply director checkbox filter
   selectAllButton.addEventListener("click", () => {
-    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+    checkboxes.querySelectorAll(".directorFilter").forEach((checkbox) => {
       checkbox.checked = true;
     });
 
@@ -197,7 +198,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   });
 
   deselectAllButton.addEventListener("click", () => {
-    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+    checkboxes.querySelectorAll(".directorFilter").forEach((checkbox) => {
       checkbox.checked = false;
     });
     const relevantData = processAllFilters();
