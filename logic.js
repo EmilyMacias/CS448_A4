@@ -55,6 +55,8 @@ function checkIfInsideCircle(x1, y1, circlex, circley, r) {
 const yearSliderLower = document.querySelector("#yearSliderLower");
 const yearSliderUpper = document.querySelector("#yearSliderUpper");
 const checkboxes = document.querySelector("#checkboxes");
+const selectAllButton = document.querySelector("#select_all");
+const deselectAllButton = document.querySelector("#deselect_all");
 
 const circle1 = svg
   .append("circle")
@@ -167,16 +169,28 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
   }
 
   // apply director checkbox filter
+  selectAllButton.addEventListener("click", () => {
+    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+      checkbox.checked = true;
+    });
+  });
+
+  deselectAllButton.addEventListener("click", () => {
+    checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  });
+
   checkboxes.addEventListener("change", () => {
-    const selectedDirectors = new Set();
+    const selectedDirectors = [];
     checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
       if (checkbox.checked) {
-        selectedDirectors.add(checkbox.id);
+        selectedDirectors.push(checkbox.id);
       }
     });
 
     const relevantData = data.filter((d) =>
-      selectedDirectors.has(d["Director"])
+      selectedDirectors.includes(d["Director"])
     );
     updateRelevantData(relevantData);
   });
