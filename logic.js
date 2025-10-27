@@ -90,8 +90,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
     .attr("fill", "black")
-    .each(function (d) {
-      d3.select(this)
+    .call((circles) => {
+      circles
         .append("title")
         .text(
           (d) =>
@@ -141,8 +141,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
       .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
       .attr("r", 2)
       .attr("fill", "black")
-      .each(function (d) {
-        d3.select(this)
+      .call((circles) => {
+        circles
           .append("title")
           .text(
             (d) =>
