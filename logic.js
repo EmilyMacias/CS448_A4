@@ -61,9 +61,9 @@ const circle1 = svg
   .attr("cx", projection([-122.45, 37.75])[0])
   .attr("cy", projection([-122.45, 37.75])[1])
   .attr("r", 100)
-  .attr("fill", "rgba(0,0,255,0.10)")
+  .attr("fill", "none")
   .attr("stroke", "blue")
-  .attr("stroke-width", 2)
+  .attr("stroke-width", 4)
   .raise();
 
 const circle2 = svg
@@ -74,7 +74,7 @@ const circle2 = svg
   .attr("r", 100)
   .attr("fill", "none")
   .attr("stroke", "red")
-  .attr("stroke-width", 2)
+  .attr("stroke-width", 4)
   .raise();
 
 d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
@@ -86,7 +86,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     .attr("cx", (d) => projection([d.Longitude, d.Latitude])[0])
     .attr("cy", (d) => projection([d.Longitude, d.Latitude])[1])
     .attr("r", 2)
-    .attr("fill", "none")
+    .attr("fill", "black")
     .each(function (d) {
       d3.select(this)
         .append("title")
