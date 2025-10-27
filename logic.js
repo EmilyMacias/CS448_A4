@@ -1,5 +1,3 @@
-const { get } = require("http");
-
 const mapWidth = 1968 / 2.4;
 const mapHeight = 1580 / 2.4; // the 2.4 can be increased or decreased to adjust the size of the map while maintaining the aspect ratio
 
