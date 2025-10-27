@@ -198,7 +198,8 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
         +circle2.attr("r")
       );
       if (isInsideOne && isInsideTwo) {
-        currentPoint.attr("fill", "black");
+        currentPoint.attr("fill", "green");
+        currentPoint.attr("r", 4);
       } else {
         currentPoint.attr("fill", "gray");
       }
