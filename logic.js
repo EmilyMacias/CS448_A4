@@ -181,7 +181,7 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
     });
   });
 
-  checkboxes.addEventListener("change", () => {
+  function processAllFilters() {
     const selectedDirectors = [];
     checkboxes.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
       if (checkbox.checked) {
@@ -189,29 +189,29 @@ d3.csv("data/SF_Film_Locations_Filtered.csv").then((data) => {
       }
     });
 
-    const relevantData = data.filter((d) =>
-      selectedDirectors.includes(d["Director"])
+    const relevantData = data.filter(
+      (d) =>
+        selectedDirectors.includes(d["Director"]) &&
+        +d["Release Year"] >= +yearSliderLower.value &&
+        +d["Release Year"] <= +yearSliderUpper.value
     );
+
+    return relevantData;
+  }
+
+  checkboxes.addEventListener("change", () => {
+    const relevantData = processAllFilters();
     updateRelevantData(relevantData);
   });
 
   // apply year slider filter
   yearSliderLower.addEventListener("input", () => {
-    const relevantData = data.filter(
-      (d) =>
-        +d["Release Year"] >= +yearSliderLower.value &&
-        +d["Release Year"] <= +yearSliderUpper.value
-    );
+    const relevantData = processAllFilters();
     updateRelevantData(relevantData);
   });
 
   yearSliderUpper.addEventListener("input", () => {
-    const relevantData = data.filter(
-      (d) =>
-        +d["Release Year"] >= +yearSliderLower.value &&
-        +d["Release Year"] <= +yearSliderUpper.value
-    );
-
+    const relevantData = processAllFilters();
     updateRelevantData(relevantData);
   });
 
